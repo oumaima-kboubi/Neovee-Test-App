@@ -13,12 +13,12 @@ use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
-
+//header('Access-Control-Allow-Origin: *');
 class AuthController extends Controller
 {
     /**
      *
-     * @Route(path="/login",methods={"GET"})
+     * @Route(path="/login/",methods={"POST"})
      *@param Request $request
      */
     public function loginAction(Request $request): JsonResponse
@@ -33,18 +33,22 @@ class AuthController extends Controller
         $test= password_verify($password,$userRepository->getUserPassword($username));
         //TODO generate the JWT and send it in the response
         if ($test = true){
-            return new JsonResponse([
+            $response= new JsonResponse([
                 'username'=>$username,
                 'id'=>$user->getId()
             ]);
+           // echo 'je suis reponse identified: '.$response;
+            return($response);
         }else{
-            return new JsonResponse(['error'=>'problem de verify mdp']);
+            $response = new JsonResponse(['error'=>'problem de verify mdp']);
+           // echo 'je suis reponse not identified : '.$response;
+            return($response);
         }
 
     }
 
     /**
-     * @Route(path="/register", methods={"POST"})
+     * @Route(path="/register/", methods={"POST"})
      * @param Request $request
      */
     public function registerAction(Request $request)
@@ -63,10 +67,16 @@ class AuthController extends Controller
         $em=$doctrine->getManager();
         $em->persist($user);
         $em->flush();
-        return(new JsonResponse([
+        $response= new JsonResponse([
             'email'=>$email,
             'username'=>$username
-        ]));
+        ]);
+//        $response->headers->set('Access-Control-Allow-Methods','POST');
+//        $response->headers->set('Access-Control-Allow-Credentials', 'true');
+ //       $response->headers->set('Content-Type', 'application/json');
+  //      $response->headers->set('Access-Control-Allow-Origin', '*');
+        return($response);
+        //return true;
     }
 
     /**

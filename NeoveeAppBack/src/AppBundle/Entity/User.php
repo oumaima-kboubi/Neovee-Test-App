@@ -54,6 +54,11 @@ class User
     }
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Article",mappedBy="id")
+     */
+    private $articles;
+
+    /**
      * Set username
      *
      * @param string $username

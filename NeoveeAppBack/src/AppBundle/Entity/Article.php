@@ -37,6 +37,16 @@ class Article
 
 
     /**
+     *@ORM\OneToOne(targetEntity="AppBundle\Entity\User",inversedBy="id")
+     *
+     */
+    private $author;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="id")
+     */
+    private $likes;
+    /**
      * Get id
      *
      * @return int

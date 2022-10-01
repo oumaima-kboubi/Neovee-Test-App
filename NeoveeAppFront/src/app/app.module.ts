@@ -9,6 +9,8 @@ import {FormsModule} from "@angular/forms";
 import { RegisterComponent } from './auth/register/register.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { HttpClientModule} from "@angular/common/http";
+import { LandingComponent } from './landing/landing.component';
 
 
 
@@ -19,12 +21,13 @@ import { FooterComponent } from './shared/footer/footer.component';
     RegisterComponent,
     NavbarComponent,
     FooterComponent,
+    LandingComponent,
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-
+    HttpClientModule,
     FormsModule,
     ROUTING,
   ],

@@ -2,10 +2,55 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/NeoveeApp/src/AppBundle" isTestSource="false" packagePrefix="AppBundle\" />
-      <sourceFolder url="file://$MODULE_DIR$/NeoveeApp/tests" isTestSource="true" packagePrefix="Tests\" />
+      <sourceFolder url="file://$MODULE_DIR$/NeoveeAppBack/src/AppBundle" isTestSource="false" packagePrefix="AppBundle\" />
+      <sourceFolder url="file://$MODULE_DIR$/NeoveeAppBack/tests" isTestSource="true" packagePrefix="Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/NeoveeAppBack/vendor/sensiolabs/security-checker" />
+      <excludeFolder url="file://$MODULE_DIR$/NeoveeAppBack/vendor/phpoption/phpoption" />
+      <excludeFolder url="file://$MODULE_DIR$/NeoveeAppBack/vendor/paragonie/random_compat" />
+      <excludeFolder url="file://$MODULE_DIR$/NeoveeAppBack/vendor/incenteev/composer-parameter-handler" />
+      <excludeFolder url="file://$MODULE_DIR$/NeoveeAppBack/vendor/doctrine/orm" />
+      <excludeFolder url="file://$MODULE_DIR$/NeoveeAppBack/vendor/doctrine/lexer" />
+      <excludeFolder url="file://$MODULE_DIR$/NeoveeAppBack/vendor/doctrine/instantiator" />
+      <excludeFolder url="file://$MODULE_DIR$/NeoveeAppBack/vendor/doctrine/inflector" />
+      <excludeFolder url="file://$MODULE_DIR$/NeoveeAppBack/vendor/doctrine/doctrine-cache-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/NeoveeAppBack/vendor/doctrine/doctrine-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/NeoveeAppBack/vendor/doctrine/dbal" />
+      <excludeFolder url="file://$MODULE_DIR$/NeoveeAppBack/vendor/doctrine/common" />
+      <excludeFolder url="file://$MODULE_DIR$/NeoveeAppBack/vendor/doctrine/collections" />
+      <excludeFolder url="file://$MODULE_DIR$/NeoveeAppBack/vendor/doctrine/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/NeoveeAppBack/vendor/doctrine/annotations" />
+      <excludeFolder url="file://$MODULE_DIR$/NeoveeAppBack/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/NeoveeAppBack/vendor/symfony/symfony" />
+      <excludeFolder url="file://$MODULE_DIR$/NeoveeAppBack/vendor/symfony/swiftmailer-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/NeoveeAppBack/vendor/symfony/polyfill-util" />
+      <excludeFolder url="file://$MODULE_DIR$/NeoveeAppBack/vendor/symfony/polyfill-php70" />
+      <excludeFolder url="file://$MODULE_DIR$/NeoveeAppBack/vendor/symfony/polyfill-php56" />
+      <excludeFolder url="file://$MODULE_DIR$/NeoveeAppBack/vendor/symfony/polyfill-mbstring" />
+      <excludeFolder url="file://$MODULE_DIR$/NeoveeAppBack/vendor/symfony/polyfill-intl-icu" />
+      <excludeFolder url="file://$MODULE_DIR$/NeoveeAppBack/vendor/symfony/polyfill-ctype" />
+      <excludeFolder url="file://$MODULE_DIR$/NeoveeAppBack/vendor/symfony/polyfill-apcu" />
+      <excludeFolder url="file://$MODULE_DIR$/NeoveeAppBack/vendor/symfony/phpunit-bridge" />
+      <excludeFolder url="file://$MODULE_DIR$/NeoveeAppBack/vendor/symfony/monolog-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/NeoveeAppBack/vendor/monolog/monolog" />
+      <excludeFolder url="file://$MODULE_DIR$/NeoveeAppBack/vendor/sensio/generator-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/NeoveeAppBack/vendor/sensio/framework-extra-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/NeoveeAppBack/vendor/sensio/distribution-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/NeoveeAppBack/vendor/jdorn/sql-formatter" />
+      <excludeFolder url="file://$MODULE_DIR$/NeoveeAppBack/vendor/twig/twig" />
+      <excludeFolder url="file://$MODULE_DIR$/NeoveeAppBack/vendor/psr/simple-cache" />
+      <excludeFolder url="file://$MODULE_DIR$/NeoveeAppBack/vendor/psr/log" />
+      <excludeFolder url="file://$MODULE_DIR$/NeoveeAppBack/vendor/psr/link" />
+      <excludeFolder url="file://$MODULE_DIR$/NeoveeAppBack/vendor/psr/container" />
+      <excludeFolder url="file://$MODULE_DIR$/NeoveeAppBack/vendor/psr/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/NeoveeAppBack/vendor/jms/serializer-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/NeoveeAppBack/vendor/jms/serializer" />
+      <excludeFolder url="file://$MODULE_DIR$/NeoveeAppBack/vendor/jms/parser-lib" />
+      <excludeFolder url="file://$MODULE_DIR$/NeoveeAppBack/vendor/jms/metadata" />
+      <excludeFolder url="file://$MODULE_DIR$/NeoveeAppBack/vendor/fig/link-util" />
+      <excludeFolder url="file://$MODULE_DIR$/NeoveeAppBack/vendor/phpcollection/phpcollection" />
+      <excludeFolder url="file://$MODULE_DIR$/NeoveeAppBack/vendor/swiftmailer/swiftmailer" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
