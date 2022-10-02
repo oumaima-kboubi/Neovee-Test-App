@@ -5,6 +5,7 @@ import {RegisterComponent} from "./auth/register/register.component";
 import {LandingComponent} from "./landing/landing.component";
 import {ArticleAddComponent} from "./personalSpace/article-add/article-add.component";
 import {ArticleEditComponent} from "./personalSpace/article-edit/article-edit.component";
+import {ArticleListComponent} from "./personalSpace/article-list/article-list.component";
 
 
 
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'landing', component: LandingComponent},
   {path: 'addArticle', component: ArticleAddComponent},
   {path: 'editArticle/:articleId', component: ArticleEditComponent},
+  {path: 'getAllArticles', component: ArticleListComponent},
 ];
 
 @NgModule({
