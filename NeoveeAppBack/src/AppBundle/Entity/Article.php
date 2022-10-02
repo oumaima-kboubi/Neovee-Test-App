@@ -37,10 +37,42 @@ class Article
 
 
     /**
-     *@ORM\OneToOne(targetEntity="AppBundle\Entity\User",inversedBy="id")
-     *
+//     *@ORM\OneToOne(targetEntity="AppBundle\Entity\User",inversedBy="id")
+     * @ORM\Column(name="author",type="integer")
      */
     private $author;
+
+    /**
+     * @return mixed
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    /**
+     * @param mixed $author
+     */
+    public function setAuthor($author): void
+    {
+        $this->author = $author;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLikes()
+    {
+        return $this->likes;
+    }
+
+    /**
+     * @param mixed $likes
+     */
+    public function setLikes($likes): void
+    {
+        $this->likes = $likes;
+    }
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="id")

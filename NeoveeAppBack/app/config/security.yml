@@ -6,6 +6,13 @@ security:
     providers:
         in_memory:
             memory: ~
+        entity_provider:
+            entity:
+                class: App\Entity\User
+                property: username
+    encoders:
+        AppBundle\Entity\User:
+            algorithm: bcrypt
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -13,15 +20,43 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
+
+        login:
+            pattern: ^/api/login
+            stateless: true
+            anonymous: true
+            json_login:
+#                provider: entity_provider
+                check_path: /api/login_check
+                username_path: username
+                password_path: password
+                success_handler: lexik_jwt_authentication.handler.authentication_success
+                failure_handler: lexik_jwt_authentication.handler.authentication_failure
+
+#                require_previous_session: false
+
+        api:
+            pattern: ^/api
+            stateless: true
+            guard:
+                authenticators:
+                    - lexik_jwt_authentication.jwt_token_authenticator
         main:
             anonymous: ~
             # activate different ways to authenticate
             logout_on_user_change: true
             # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
             #http_basic: ~
-
+#            provider: entity_provider
             # https://symfony.com/doc/current/security/form_login_setup.html
             #form_login: ~
 
-    encoders:
-        AppBundle\Entity\User: bcrypt
+    access_control:
+            - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+            - { path: ^/api/addArticle/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+#            - { path: ^/api/login_check, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+            - { path: ^/register/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+#            - { path: ^/profile, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+#            - { path: ^/,       roles: IS_AUTHENTICATED_FULLY }
+
+

@@ -10,7 +10,7 @@ import {conditionallyCreateMapObjectLiteral} from "@angular/compiler/src/render3
 export class AuthService {
   link = 'http://127.0.0.1:8000';
   //jwtHelper = new JwtHelperService();
-  userInfo = new BehaviorSubject(null);
+//  userInfo = new BehaviorSubject(null);
   constructor(private http: HttpClient) {
   }
 
@@ -32,8 +32,10 @@ export class AuthService {
           if(!data) {
             console.log("empty login response");
           }
-          console.log("this is my data:");
-          console.log(data);
+          localStorage.setItem('id',data.id)
+          localStorage.setItem('username',data.username)
+          // console.log("this is my data:");
+          // console.log(data);
         })
       );;
 

@@ -6,20 +6,39 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class ArticleControllerTest extends WebTestCase
 {
-    /*
-    public function testCompleteScenario()
+    public function testGetarticle()
     {
-        // Create a new client to browse the application
         $client = static::createClient();
 
-        // Go to the list view
-        $crawler = $client->request('GET', '/article/');
-        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /article/");
-
-        // Go to the show view
-        $crawler = $client->click($crawler->selectLink('show')->link());
-        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code");
+        $crawler = $client->request('GET', '/getArticle');
     }
 
-    */
+    public function testAddarticle()
+    {
+        $client = static::createClient();
+
+        $crawler = $client->request('GET', '/addArticle');
+    }
+
+    public function testEditarticle()
+    {
+        $client = static::createClient();
+
+        $crawler = $client->request('GET', '/editArticle');
+    }
+
+    public function testDeletearticle()
+    {
+        $client = static::createClient();
+
+        $crawler = $client->request('GET', '/deleteArticle');
+    }
+
+    public function testGetallarticle()
+    {
+        $client = static::createClient();
+
+        $crawler = $client->request('GET', '/getAllArticle');
+    }
+
 }

@@ -24,4 +24,10 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
 //        echo ((string)$query);
 //        return;
     }
+    public function getUserEmail(string $username)
+    {
+        $user = $this->findOneBy(array('username' => $username));
+        return ($user->getEmail());
+    }
+
 }

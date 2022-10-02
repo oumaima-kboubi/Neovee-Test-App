@@ -1,12 +1,15 @@
 export class Article {
-  id: number;
+   id: number;
   title: string;
-  content:string;
+   content:string;
+   author:number;
 
-  constructor(id = 0, title= '', content = '') {
+
+  constructor(id = 0,title= '', content = '',author=0) {
     this.id = id;
     this.title = title;
     this.content = content;
+    this.author= author;
 
   }
 }

@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * User
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  */
-class User
+class User implements UserInterface
 {
     /**
      * @var int
@@ -41,7 +42,19 @@ class User
      * @ORM\Column(name="email", type="string", length=150)
      */
     private $email;
+    /**
+     * @ORM\Column(name="is_active", type="boolean")
+     */
+    private $isActive;
 
+    /**
+     * @param string $username
+     */
+    public function __construct()
+    {
+//        $this->username = $username;
+        $this->isActive = true;
+    }
 
     /**
      * Get id
@@ -128,6 +141,18 @@ class User
     public function getEmail()
     {
         return $this->email;
+    }
+    public function getSalt()
+    {
+        return null;
+    }
+    public function getRoles()
+    {
+        return array('ROLE_USER');
+    }
+
+    public function eraseCredentials()
+    {
     }
 }
 
