@@ -21,15 +21,15 @@ export class LoginComponent implements OnInit {
     private router:Router
   ) { }
 
-
+  //The login Method
   onSubmit(loginFormulaire: NgForm){
     console.log(loginFormulaire.value);
     const link =['landing'];
     this.authService.userLogin(loginFormulaire.value).subscribe(
         (response)=>{
-        //  console.log('i am before landing navigate')
-          this.router.navigate(link)
-         // console.log('i am after landing navigate')
+         // const token = 'test';
+          //localStorage.setItem('token',token) ;
+          this.router.navigate(link);
         },
         (error)=>{
           this.errorMessage = `Problème de cnx pour login server`;
