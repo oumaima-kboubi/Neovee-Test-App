@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ArticleService} from "../../article.service";
 
 @Component({
@@ -10,20 +10,16 @@ export class MySpaceComponent implements OnInit {
 
   constructor(
     private articleService: ArticleService
-  ) { }
-  myArticles : any;
-  ngOnInit(): void {
-    this.articleService.getAllArticles().subscribe(
-      (data)=>{
-        this.myArticles = data;
+  ) {}
 
-        // this.articleService.getAuthor().subscribe(
-        //   (author)=>{
-        //
-        //   }
-        // )
+  myArticles: any;
+
+  ngOnInit(): void {
+    this.articleService.getMyArticles().subscribe(
+      (data) => {
+        this.myArticles = data;
       },
-      (error)=> {
+      (error) => {
         console.log('no articles exist needs to be managed');
       }
     )

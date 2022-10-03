@@ -14,7 +14,6 @@ export class ArticleService {
   }
 
   addArticle(article: Article): Observable<any> {
-
     return this.http.post("http://127.0.0.1:8000/addArticle/", article).pipe(
       map((data: any) => {
         if (!data) {
@@ -28,6 +27,13 @@ export class ArticleService {
   getAllArticles(): Observable<any> {
     return this.http.get<any>("http://127.0.0.1:8000/getAllArticles/");
   }
+
+  getMyArticles(): Observable<any> {
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("username", localStorage.getItem('username'));
+    return this.http.get<any>("http://127.0.0.1:8000/getMyArticles/", {params: queryParams});
+  }
+
   // getAuthor( id: number):Observable<any>{
   //   let queryParams = new HttpParams();
   //   queryParams = queryParams.append("id",id);
