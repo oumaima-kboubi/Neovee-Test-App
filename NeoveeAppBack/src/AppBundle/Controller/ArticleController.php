@@ -6,7 +6,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use AppBundle\Entity\User;
 use AppBundle\Entity\Article;
 class ArticleController extends Controller
 {
@@ -30,10 +29,15 @@ class ArticleController extends Controller
         $title=$data['title'];
         $content=$data['content'];
         $author=$data['author'];
+        $update= new \DateTime();
+        $updateDate=$update->format('d-m-Y H:i:s');
+//        $updateDate=getdate($update2);
+//        $updateDate=date('d/m/Y H:i:s',$update2);
         $article= new Article();
         $article->setContent($content);
         $article->setTitle($title);
         $article->setAuthor($author);
+        $article->setUpdateDate($updateDate);
         $doctrine = $this->getDoctrine();
         $em=$doctrine->getManager();
         $em->persist($article);
@@ -41,9 +45,10 @@ class ArticleController extends Controller
         $response= new JsonResponse([
             'title'=>$title,
             'content'=>$content,
-            'author'=>$author
+            'author'=>$author,
+            'updateDate'=>$updateDate,
         ]);
-        echo($response);
+//        echo($response);
         return($response);
     }
 
@@ -68,13 +73,50 @@ class ArticleController extends Controller
     }
 
     /**
-     * @Route("/getAllArticle")
+     * @Route(path="/getAllArticles/" , methods={"GET"})
+     * @param Request $request
      */
-    public function getAllArticleAction()
+    public function getAllArticlesAction(Request $request)
     {
-        return $this->render('AppBundle:Article:get_all_article.html.twig', array(
-            // ...
-        ));
+        $articleRepository=$this->getDoctrine()->getRepository('AppBundle:Article');
+        $userRepository=$this->getDoctrine()->getRepository('AppBundle:User');
+        $em = $this->getDoctrine()->getManager();
+
+        $query = $em->createQuery(
+            'SELECT a
+        FROM AppBundle:Article a'
+        );
+        $articles = $query->getArrayResult();
+//        $articlesArray=json_decode($articles,true);
+        $articlesResult =[];
+
+//        foreach ($articles as $key => $value){
+//            $id=$value['author'];
+//            $user = $userRepository->findOneBy(array('id'=>$id));
+//            //we can simply use $user->getPassword() instead of $userRepository->getUserPassword()
+//            $username= $user->getUsername();
+//            echo $username;
+//            $value['author']=$username;
+//        }
+        $response = new JsonResponse($articles);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+    }
+
+    /**
+     * @Route(path="/getAuthor/:id" , methods={"GET"})
+     * @param Request $request
+     */
+    public function getAuthorAction(Request $request)
+    {
+        $authorId=$request->params->get('id');
+        $userRepository=$this->getDoctrine()->getRepository('AppBundle:User');
+        $user = $userRepository->findOneBy(array('id'=>$authorId));
+        $authorname= $user->getUsername();
+        $response = new JsonResponse($authorname);
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
     }
 
 }

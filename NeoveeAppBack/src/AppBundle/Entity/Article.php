@@ -37,10 +37,35 @@ class Article
 
 
     /**
-//     *@ORM\OneToOne(targetEntity="AppBundle\Entity\User",inversedBy="id")
-     * @ORM\Column(name="author",type="integer")
+     *
+     * @ORM\Column(name="author",type="string",length=100)
      */
     private $author;
+
+    /**
+     *
+     * @ORM\Column(name="updateDate",type="string",length=255)
+     */
+    private $updateDate;
+
+    /**
+     * @return mixed
+     */
+    public function getUpdateDate()
+    {
+        return $this->updateDate;
+    }
+
+    /**
+     * @param mixed $updateDate
+     */
+    public function setUpdateDate($updateDate): void
+    {
+        $this->updateDate = $updateDate;
+    }
+
+
+
 
     /**
      * @return mixed
@@ -78,6 +103,7 @@ class Article
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="id")
      */
     private $likes;
+
     /**
      * Get id
      *
