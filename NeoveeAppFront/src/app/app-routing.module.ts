@@ -6,6 +6,7 @@ import {LandingComponent} from "./landing/landing.component";
 import {ArticleAddComponent} from "./personalSpace/article-add/article-add.component";
 import {ArticleEditComponent} from "./personalSpace/article-edit/article-edit.component";
 import {ArticleListComponent} from "./personalSpace/article-list/article-list.component";
+import {MySpaceComponent} from "./personalSpace/my-space/my-space.component";
 
 
 
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'addArticle', component: ArticleAddComponent},
   {path: 'editArticle/:articleId', component: ArticleEditComponent},
   {path: 'getAllArticles', component: ArticleListComponent},
+  {path: 'myspace', component: MySpaceComponent},
 ];
 
 @NgModule({

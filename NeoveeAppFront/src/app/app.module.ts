@@ -21,6 +21,9 @@ import { ArticleEditComponent } from './personalSpace/article-edit/article-edit.
 import { ArticleEditCardComponent } from './personalSpace/article-edit-card/article-edit-card.component';
 import { ArticleListComponent } from './personalSpace/article-list/article-list.component';
 import { ArticleListCardComponent } from './personalSpace/article-list-card/article-list-card.component';
+import { MySpaceComponent } from './personalSpace/my-space/my-space.component';
+import { MySpaceArticleCardComponent } from './personalSpace/my-space-article-card/my-space-article-card.component';
+import { MySpaceUserCardComponent } from './personalSpace/my-space-user-card/my-space-user-card.component';
 
 
 
@@ -38,7 +41,10 @@ import { ArticleListCardComponent } from './personalSpace/article-list-card/arti
     ArticleEditComponent,
     ArticleEditCardComponent,
     ArticleListComponent,
-    ArticleListCardComponent
+    ArticleListCardComponent,
+    MySpaceComponent,
+    MySpaceArticleCardComponent,
+    MySpaceUserCardComponent
 
   ],
   imports: [

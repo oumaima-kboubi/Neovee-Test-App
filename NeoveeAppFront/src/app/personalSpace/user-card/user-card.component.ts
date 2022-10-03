@@ -7,7 +7,7 @@ import {User} from "../../model/User";
   styleUrls: ['./user-card.component.css']
 })
 export class UserCardComponent implements OnInit {
-user: User = new User(1,'oumaima','123');
+user: User = new User();
 
   constructor() { }
 

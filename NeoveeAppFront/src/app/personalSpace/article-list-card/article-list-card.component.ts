@@ -26,7 +26,6 @@ export class ArticleListCardComponent implements OnInit {
     console.log(this.hideLike);
   }
 
-
   // showPreview(id:number){
   //   this.router.navigate(['previewArticle/'+id]);
   // }
