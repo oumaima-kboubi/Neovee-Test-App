@@ -1,4 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {ArticleService} from "../../article.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-my-space-article-card',
@@ -11,7 +13,10 @@ export class MySpaceArticleCardComponent implements OnInit {
   @Input() author
   @Input() id
   @Input() updateDate
-  constructor() { }
+  constructor(
+    private articleService :ArticleService,
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
   //   if(localStorage.getItem('username')=== this.author){
@@ -21,5 +26,23 @@ export class MySpaceArticleCardComponent implements OnInit {
   //   }
   //   console.log(this.hideLike);
   }
+
+  deleteMyArticle(id:number){
+    const link =['myspace'];
+    this.articleService.deleteArticle(id).subscribe(
+      (data) => {
+        // console.log(data)
+          this.router.navigate(['myspace']);
+        // console.log('je suis aprés navigate delete')
+      },
+      (error) => {
+        console.log('no articles exist needs to be managed');
+      }
+
+    )
+    // this.router.navigate(['myspace']);
+  }
+
+
 
 }

@@ -23,7 +23,7 @@ export class ArticleListCardComponent implements OnInit {
     }else{
       this.hideLike= false;
     }
-    console.log(this.hideLike);
+    // console.log(this.hideLike);
   }
 
   // showPreview(id:number){

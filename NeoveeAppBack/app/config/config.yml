@@ -91,6 +91,8 @@ nelmio_cors:
             allow_origin: [ '*' ]
         '^/getMyArticles/':
             allow_origin: [ '*' ]
+        '^/deleteArticle/':
+            allow_origin: [ '*' ]
 
 # JWT Authentication
 lexik_jwt_authentication:

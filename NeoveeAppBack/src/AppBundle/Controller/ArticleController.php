@@ -62,12 +62,26 @@ class ArticleController extends Controller
     }
 
     /**
-     * @Route("/deleteArticle")
+     * @Route(path="/deleteArticle/",methods={"DELETE"})
+     * @param Request $requeste
      */
-    public function deleteArticleAction()
+    public function deleteArticleAction(Request $request)
     {
-        return $this->render('AppBundle:Article:delete_article.html.twig', array(// ...
-        ));
+        $idArticle= $request->query->get('id');
+
+        $articleRepository = $this->getDoctrine()->getRepository('AppBundle:Article');
+        $em = $this->getDoctrine()->getManager();
+        $query = $em->createQuery(
+            'DELETE 
+        FROM AppBundle:Article a
+        WHERE a.id = :idArticle'
+        );
+        $query->setParameter('idArticle', $idArticle);
+        $result = $query->getResult();
+        $response = new JsonResponse($result);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
     }
 
     /**

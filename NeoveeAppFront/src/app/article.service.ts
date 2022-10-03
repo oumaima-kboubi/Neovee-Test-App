@@ -39,4 +39,9 @@ export class ArticleService {
   //   queryParams = queryParams.append("id",id);
   //   return this.http.get<any>("http://127.0.0.1:8000/getAuthor/",{params:queryParams});
   // }
+  deleteArticle(id:number): Observable<any> {
+  let queryParams = new HttpParams();
+  queryParams = queryParams.append("id", id);
+  return this.http.delete("http://127.0.0.1:8000/deleteArticle/", {params: queryParams});
+}
 }
