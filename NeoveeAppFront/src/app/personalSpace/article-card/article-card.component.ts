@@ -27,20 +27,16 @@ export class ArticleCardComponent implements OnInit {
     const link =['getAllArticles'];
 
     console.log(addArticleFormulaire.value);
-    // this.title = addArticleFormulaire.value['title'];
-    // this.content=addArticleFormulaire.value['content'];
-    this.userId=localStorage.getItem('id');
-    this.article.author=parseFloat( localStorage.getItem('id'));
-    // console.log(addArticleFormulaire.value['title'])
+    this.article.author= localStorage.getItem('username');
     this.article.title=addArticleFormulaire.value['title'];
     this.article.content=addArticleFormulaire.value['content'];
+    // this.article.updateDate=new Date();
     console.log(this.article);
     this.articleService.addArticle(this.article).subscribe(
       (response)=>{
-        this.router.navigate(link)
+        this.router.navigate(link);
       },
       (error)=>{
-        // this.errorMessage = `Problème de cnx à register server`;
         console.log(error);
       }
     );

@@ -23,9 +23,10 @@ export class ArticleEditComponent implements OnInit {
         this.articleId=params['articleId'];
         console.log(this.articleId);
       }
-
     )
-
   }
 
+    editArticle(){
+
+    }
 }

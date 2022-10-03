@@ -1,6 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {User} from "../../model/User";
-import {Article} from "../../model/Article";
 import {Router} from "@angular/router";
 
 @Component({
@@ -9,22 +7,28 @@ import {Router} from "@angular/router";
   styleUrls: ['./article-list-card.component.css']
 })
 export class ArticleListCardComponent implements OnInit {
-  user: User = new User(1,'oumaima','123');
+
   @Input() title
   @Input() content
   @Input() author
   @Input() id
-
+  @Input() updateDate
   constructor(
     private router:Router
   ) { }
-
+  hideLike:any;
   ngOnInit(): void {
+    if(localStorage.getItem('username')=== this.author){
+      this.hideLike= true;
+    }else{
+      this.hideLike= false;
+    }
+    console.log(this.hideLike);
   }
+
+
   // showPreview(id:number){
   //   this.router.navigate(['previewArticle/'+id]);
   // }
-  like(id: number){
 
-  }
 }

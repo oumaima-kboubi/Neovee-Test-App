@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {User} from "./model/User";
 import {Observable, of, map, BehaviorSubject} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {conditionallyCreateMapObjectLiteral} from "@angular/compiler/src/render3/view/util";
 
 @Injectable({
   providedIn: 'root'

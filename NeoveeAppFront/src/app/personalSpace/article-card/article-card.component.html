@@ -1,8 +1,8 @@
 
   <div class="card" >
     <div class="card-header card-header-danger">
-      <h4 class="card-title">Add an article</h4>
-      <p class="card-category">Feel free to be creative :)</p>
+      <h1 class="card-title" style="color: orange;font-weight: bold; margin-top: 10px;margin-left: 10px ">Add an article</h1>
+      <p class="card-category">Feel free to be creative  <i class="fa fa-smile-o"></i></p>
     </div>
     <div class="card-body">
       <form class="register-form"  (ngSubmit)="onSubmit(addArticleFormulaire)" #addArticleFormulaire="ngForm" >
@@ -39,7 +39,7 @@
           The content is required
         </div>
 
-        <button class="btn btn-danger  btn-block btn-round " style=" margin-left:36%;" type="button" [disabled]="addArticleFormulaire.invalid"  (click)="onSubmit(addArticleFormulaire)"  >Let's GO</button>
+        <button class="btn btn-danger  btn-block btn-round " style=" margin-left:36%;" type="button" [disabled]="addArticleFormulaire.invalid"  (click)="onSubmit(addArticleFormulaire)"  >Add article</button>
 
       </form>
     </div>

@@ -1,4 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Article} from "../../model/Article";
+import {ArticleService} from "../../article.service";
 
 @Component({
   selector: 'app-article-list',
@@ -7,10 +9,13 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class ArticleListComponent implements OnInit {
   hideFooterFromChild=true;
-  constructor() {
+
+  constructor(
+    private articleService: ArticleService
+  ) {
   }
 
-  articles = [{
+  article = [{
     id: 1,
     title: 'hvjkb',
     content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.',
@@ -78,8 +83,22 @@ export class ArticleListComponent implements OnInit {
       content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.',
       author:'foulen'
     }]
-
+  articles : any;
   ngOnInit(): void {
+     this.articleService.getAllArticles().subscribe(
+      (data)=>{
+        this.articles = data;
+
+        // this.articleService.getAuthor().subscribe(
+        //   (author)=>{
+        //
+        //   }
+        // )
+      },
+       (error)=> {
+         console.log('no articles exist needs to be managed');
+       }
+     )
   }
 
 }
