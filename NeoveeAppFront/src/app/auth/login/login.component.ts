@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   //The login Method
   onSubmit(loginFormulaire: NgForm){
     console.log(loginFormulaire.value);
-    const link =['getAllArticles'];
+    const link =['myspace'];
     this.authService.userLogin(loginFormulaire.value).subscribe(
         (response)=>{
           console.log(response);

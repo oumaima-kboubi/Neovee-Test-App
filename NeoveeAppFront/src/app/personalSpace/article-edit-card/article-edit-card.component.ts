@@ -57,9 +57,10 @@ export class ArticleEditCardComponent implements OnInit {
     this.activatedRoute.params.subscribe(
       (params)=>{
         this.article.id=params['articleId'];
-        console.log(this.article.id);
+        // console.log(this.article.id);
       }
-    )
+    );
+
     this.articleService.getMyArticle(this.article.id).subscribe(
       (data)=>{
         // console.log('content repons eget article');
@@ -69,6 +70,7 @@ export class ArticleEditCardComponent implements OnInit {
           content: data[0].content,
         });
       }
-    )
+    );
+    // throw this.activatedRoute;
   }
 }

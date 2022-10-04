@@ -24,6 +24,7 @@ import { ArticleListCardComponent } from './personalSpace/article-list-card/arti
 import { MySpaceComponent } from './personalSpace/my-space/my-space.component';
 import { MySpaceArticleCardComponent } from './personalSpace/my-space-article-card/my-space-article-card.component';
 import { MySpaceUserCardComponent } from './personalSpace/my-space-user-card/my-space-user-card.component';
+import { NavComponent } from './shared/nav/nav.component';
 
 
 
@@ -44,7 +45,8 @@ import { MySpaceUserCardComponent } from './personalSpace/my-space-user-card/my-
     ArticleListCardComponent,
     MySpaceComponent,
     MySpaceArticleCardComponent,
-    MySpaceUserCardComponent
+    MySpaceUserCardComponent,
+    NavComponent
 
   ],
   imports: [

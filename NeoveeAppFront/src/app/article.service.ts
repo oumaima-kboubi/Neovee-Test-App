@@ -19,13 +19,13 @@ export class ArticleService {
         if (!data) {
           console.log("empty article response");
         }
-        console.log(data);
+        // console.log(data);
       })
     );
   }
 
   editArticle(article: Article): Observable<any> {
-    return this.http.put("http://127.0.0.1:8000/editArticle/", article).pipe(
+    return this.http.put("http://127.0.0.1:8000/editArticle/", article,{responseType: 'text'}).pipe(
       map((data: any) => {
         if (!data) {
           console.log("empty article response");
@@ -68,9 +68,14 @@ export class ArticleService {
     return this.http.get("http://127.0.0.1:8000/deleteArticle/", {params: queryParams});
   }
 
-  addLike(id: number): Observable<any> {
+  addLike(idArticle: number): Observable<any> {
     let queryParams = new HttpParams();
-    queryParams = queryParams.append("id", id);
-    return this.http.put("http://127.0.0.1:8000/addLikeArticle/", {params: queryParams});
+    // console.log(idArticle);
+    // console.log(localStorage.getItem('id'));
+    queryParams = queryParams.append("articleId", idArticle);
+    console.log(idArticle);
+    queryParams = queryParams.append("userId", localStorage.getItem('id'));
+    console.log(localStorage.getItem('id'));
+    return this.http.post("http://127.0.0.1:8000/addLikeArticle/", {params: queryParams});
   }
 }

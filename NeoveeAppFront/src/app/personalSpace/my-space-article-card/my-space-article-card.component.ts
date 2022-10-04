@@ -33,8 +33,8 @@ export class MySpaceArticleCardComponent implements OnInit {
     const link = ['myspace'];
     this.articleService.deleteArticle(id).subscribe(
       (data) => {
-        // console.log(data)
-        this.router.navigate(['myspace']);
+
+        this.router.navigateByUrl('getAllArticles');
         // console.log('je suis aprés navigate delete')
       },
       (error) => {

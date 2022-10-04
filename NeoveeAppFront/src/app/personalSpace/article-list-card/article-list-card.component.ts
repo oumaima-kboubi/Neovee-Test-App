@@ -15,28 +15,42 @@ export class ArticleListCardComponent implements OnInit {
   @Input() id
   @Input() updateDate
   @Input() heartColor
+
   constructor(
-    private router:Router,
+    private router: Router,
     private articleService: ArticleService,
-  ) { }
-  hideLike:any;
+  ) {
+  }
+
+  hideLike: any;
 
   ngOnInit(): void {
-    if(localStorage.getItem('username')=== this.author){
-      this.hideLike= true;
-    }else{
-      this.hideLike= false;
+    if (localStorage.getItem('username') === this.author) {
+      this.hideLike = true;
+    } else {
+      this.hideLike = false;
     }
     //using the username we will verify if the article is liked or not and change to the fitting color
-    this.heartColor='#383737';
+    this.heartColor = '#383737';
   }
-  likeArticle(id:number){
-        this.heartColor='orangered'
-        this.articleService.addLike(id).subscribe(
 
-        )
-        // likeArticle
+  likeArticle(id: number) {
+    this.heartColor = 'orangered'
+    this.articleService.addLike(this.id).subscribe(
+      (data) => {
+        console.log('je suis like article avant data')
+        console.log(data)
+        console.log('je suis like article apres data')
+      },
+      (error) => {
+        console.log('je suis like article avant error')
+        console.log(error)
+        console.log('je suis like article apres error')
+      }
+    )
+    // likeArticle
   }
+
   // showPreview(id:number){
   //   this.router.navigate(['previewArticle/'+id]);
   // }
