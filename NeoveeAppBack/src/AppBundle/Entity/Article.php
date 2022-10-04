@@ -21,6 +21,7 @@ class Article
      */
     private $id;
 
+
     /**
      * @var string
      *
@@ -160,6 +161,13 @@ class Article
     public function getContent()
     {
         return $this->content;
+    }
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
     }
 }
 

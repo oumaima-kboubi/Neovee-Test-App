@@ -12,6 +12,7 @@ user: User = new User();
   constructor() { }
 
   ngOnInit(): void {
+    this.user.username=localStorage.getItem('username');
   }
 
 }

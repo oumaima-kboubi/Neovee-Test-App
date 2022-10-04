@@ -1,7 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Article} from "../../model/Article";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {ArticleService} from "../../article.service";
 
 @Component({
   selector: 'app-article-edit-card',
@@ -13,19 +14,39 @@ export class ArticleEditCardComponent implements OnInit {
   // @Input() articleId:number;
   focus: any;
   focus1: any;
-  article: Article = new Article(2, 'test title', 'coznfnpfejlzeez\nfveveve\nvddefve');
+  article: Article = new Article();
   editReactiveForm: FormGroup;
-  articleToEdit: Article = new Article(1, 'titre', 'contentttttttt\zefergerg\egerg');
+  articleToEdit: Article = new Article();
 
   onSubmit() {
-    console.log(this.editReactiveForm.value);
+    // console.log(this.editReactiveForm.value['title']);
+    this.article.title=this.editReactiveForm.value.title;
+    this.article.content=this.editReactiveForm.value.content;
+    this.article.author=localStorage.getItem('username');
+    console.log(this.article)
+    const link =['myspace'];
+    this.articleService.editArticle(this.article).subscribe(
+      (response)=>{
+        // console.log('i a here');
+
+        this.router.navigateByUrl('myspace')
+      },
+      (error)=>{
+        console.log(error);
+      }
+    );
+
 
   }
   onReset(){
     this.editReactiveForm.reset();
   }
 
-  constructor() {
+  constructor(
+    private articleService: ArticleService,
+    private router: Router,
+    private activatedRoute:ActivatedRoute,
+  ) {
   }
 
   ngOnInit(): void {
@@ -33,13 +54,21 @@ export class ArticleEditCardComponent implements OnInit {
       title: new FormControl(null, Validators.required),
       content: new FormControl(null, Validators.required),
     });
-    this.editReactiveForm.patchValue({
-      title: this.article.title,
-      content: this.article.content,
-    })
-
-
+    this.activatedRoute.params.subscribe(
+      (params)=>{
+        this.article.id=params['articleId'];
+        console.log(this.article.id);
+      }
+    )
+    this.articleService.getMyArticle(this.article.id).subscribe(
+      (data)=>{
+        // console.log('content repons eget article');
+        // console.log(data[0]);
+        this.editReactiveForm.patchValue({
+          title: data[0].title,
+          content: data[0].content,
+        });
+      }
+    )
   }
-
-
 }

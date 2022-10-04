@@ -13,36 +13,45 @@ export class MySpaceArticleCardComponent implements OnInit {
   @Input() author
   @Input() id
   @Input() updateDate
-  constructor(
-    private articleService :ArticleService,
-    private router: Router,
-  ) { }
 
-  ngOnInit(): void {
-  //   if(localStorage.getItem('username')=== this.author){
-  //     this.hideLike= true;
-  //   }else{
-  //     this.hideLike= false;
-  //   }
-  //   console.log(this.hideLike);
+  constructor(
+    private articleService: ArticleService,
+    private router: Router,
+  ) {
   }
 
-  deleteMyArticle(id:number){
-    const link =['myspace'];
+  ngOnInit(): void {
+    //   if(localStorage.getItem('username')=== this.author){
+    //     this.hideLike= true;
+    //   }else{
+    //     this.hideLike= false;
+    //   }
+    //   console.log(this.hideLike);
+  }
+
+  deleteMyArticle(id: number) {
+    const link = ['myspace'];
     this.articleService.deleteArticle(id).subscribe(
       (data) => {
         // console.log(data)
-          this.router.navigate(['myspace']);
+        this.router.navigate(['myspace']);
         // console.log('je suis aprés navigate delete')
       },
       (error) => {
         console.log('no articles exist needs to be managed');
       }
-
     )
-    // this.router.navigate(['myspace']);
   }
-
-
-
+  // editMyArticle(id: number) {
+  //   const link = ['myspace'];
+  //
+  //   this.articleService.editArticle(id).subscribe(
+  //     (data) => {
+  //
+  //     },
+  //     (error) => {
+  //       console.log('no articles exist needs to be managed');
+  //     }
+  //   )
+  // }
 }

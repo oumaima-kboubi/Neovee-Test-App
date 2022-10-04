@@ -10,14 +10,7 @@ use AppBundle\Entity\Article;
 
 class ArticleController extends Controller
 {
-    /**
-     * @Route("/getArticle")
-     */
-    public function getArticleAction()
-    {
-        return $this->render('AppBundle:Article:get_article.html.twig', array(// ...
-        ));
-    }
+
 
     /**
      * @Route(path="/addArticle/", methods={"POST"})
@@ -51,15 +44,41 @@ class ArticleController extends Controller
 //        echo($response);
         return ($response);
     }
-
     /**
-     * @Route("/editArticle")
+     * @Route(path="/editArticle/", methods={"PUT"})
+     * @param Request $request
      */
-    public function editArticleAction()
+    public function editArticleAction(Request $request)
     {
-        return $this->render('AppBundle:Article:edit_article.html.twig', array(// ...
-        ));
+        echo $request;
+        $data = json_decode($request->getContent(), true);
+        $title = $data['title'];
+        $content = $data['content'];
+        $author = $data['author'];
+        $id = $data['id'];
+        $update = new \DateTime();
+        $updateDate = $update->format('d-m-Y H:i:s');
+//        $data['updatedDate']=$updateDate;
+        $article = new Article();
+        $article->setContent($content);
+        $article->setId($id);
+        $article->setTitle($title);
+        $article->setAuthor($author);
+        $article->setUpdateDate($updateDate);
+        $doctrine = $this->getDoctrine();
+        $em = $doctrine->getManager();
+        $em->merge($article);
+        $em->flush();
+        $response = new JsonResponse([
+            'title' => $title,
+            'content' => $content,
+            'author' => $author,
+            'updateDate' => $updateDate,
+        ]);
+        return ($response);
     }
+
+
 
     /**
      * @Route(path="/deleteArticle/",methods={"DELETE"})
@@ -67,7 +86,7 @@ class ArticleController extends Controller
      */
     public function deleteArticleAction(Request $request)
     {
-        $idArticle= $request->query->get('id');
+        $idArticle = $request->query->get('id');
 
         $articleRepository = $this->getDoctrine()->getRepository('AppBundle:Article');
         $em = $this->getDoctrine()->getManager();
@@ -121,7 +140,8 @@ class ArticleController extends Controller
      * @param Request $request
      */
     public function getMyArticlesAction(Request $request)
-    {    $username= $request->query->get('username');
+    {
+        $username = $request->query->get('username');
 
         $articleRepository = $this->getDoctrine()->getRepository('AppBundle:Article');
         $em = $this->getDoctrine()->getManager();
@@ -135,6 +155,28 @@ class ArticleController extends Controller
         $response = new JsonResponse($articles);
         $response->headers->set('Content-Type', 'application/json');
 
+        return $response;
+    }
+
+    /**
+     * @Route(path="/getArticle/" , methods={"GET"})
+     * @param Request $request
+     */
+    public function getArticleAction(Request $request)
+    {
+        $articleId = $request->query->get('id');
+
+        $articleRepository = $this->getDoctrine()->getRepository('AppBundle:Article');
+        $em = $this->getDoctrine()->getManager();
+        $query = $em->createQuery(
+            'SELECT a
+        FROM AppBundle:Article a
+        WHERE a.id = :articleId'
+        );
+        $query->setParameter('articleId', $articleId);
+        $article = $query->getArrayResult();
+        $response = new JsonResponse($article);
+        $response->headers->set('Content-Type', 'application/json');
         return $response;
     }
 

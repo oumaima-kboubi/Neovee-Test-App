@@ -16,6 +16,7 @@ export class MySpaceUserCardComponent implements OnInit {
   ) { }
   link=['addArticle']
   ngOnInit(): void {
+    this.user.username=localStorage.getItem('username');
   }
   addArticle(){
 

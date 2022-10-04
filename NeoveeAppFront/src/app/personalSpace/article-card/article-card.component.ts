@@ -24,7 +24,7 @@ export class ArticleCardComponent implements OnInit {
     private router: Router,
   ) { }
   onSubmit(addArticleFormulaire: NgForm){
-    const link =['getAllArticles'];
+    const link =['myspace'];
 
     console.log(addArticleFormulaire.value);
     this.article.author= localStorage.getItem('username');
