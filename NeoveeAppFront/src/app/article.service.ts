@@ -23,6 +23,7 @@ export class ArticleService {
       })
     );
   }
+
   editArticle(article: Article): Observable<any> {
     return this.http.put("http://127.0.0.1:8000/editArticle/", article).pipe(
       map((data: any) => {
@@ -43,7 +44,8 @@ export class ArticleService {
     queryParams = queryParams.append("username", localStorage.getItem('username'));
     return this.http.get<any>("http://127.0.0.1:8000/getMyArticles/", {params: queryParams});
   }
-  getMyArticle(id:number): Observable<any> {
+
+  getMyArticle(id: number): Observable<any> {
     let queryParams = new HttpParams();
     queryParams = queryParams.append("id", id);
     return this.http.get<any>("http://127.0.0.1:8000/getArticle/", {params: queryParams});
@@ -54,16 +56,21 @@ export class ArticleService {
   //   queryParams = queryParams.append("id",id);
   //   return this.http.get<any>("http://127.0.0.1:8000/getAuthor/",{params:queryParams});
   // }
-  deleteArticle(id:number): Observable<any> {
+  deleteArticle(id: number): Observable<any> {
     let queryParams = new HttpParams();
     queryParams = queryParams.append("id", id);
     return this.http.delete("http://127.0.0.1:8000/deleteArticle/", {params: queryParams});
   }
-  getArticle(id:number): Observable<any> {
-  let queryParams = new HttpParams();
-  queryParams = queryParams.append("id", id);
-  return this.http.get("http://127.0.0.1:8000/deleteArticle/", {params: queryParams});
-}
 
+  getArticle(id: number): Observable<any> {
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("id", id);
+    return this.http.get("http://127.0.0.1:8000/deleteArticle/", {params: queryParams});
+  }
 
+  addLike(id: number): Observable<any> {
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("id", id);
+    return this.http.put("http://127.0.0.1:8000/addLikeArticle/", {params: queryParams});
+  }
 }

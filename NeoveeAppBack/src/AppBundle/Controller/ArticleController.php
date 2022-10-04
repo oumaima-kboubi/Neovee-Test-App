@@ -78,6 +78,51 @@ class ArticleController extends Controller
         return ($response);
     }
 
+ /**
+     * @Route(path="/addLikeArticle/", methods={"PUT"})
+     * @param Request $request
+     */
+    public function addLikeArticleAction(Request $request)
+    {
+        echo $request;
+        $data = json_decode($request->getContent(), true);
+//        $title = $data['title'];
+//        $content = $data['content'];
+//        $author = $data['author'];
+//        $id = $data['id'];
+//        $update = new \DateTime();
+//        $updateDate = $update->format('d-m-Y H:i:s');
+////        $data['updatedDate']=$updateDate;
+//        $article = new Article();
+//        $article->setContent($content);
+//        $article->setId($id);
+//        $article->setTitle($title);
+//        $article->setAuthor($author);
+//        $article->setUpdateDate($updateDate);
+//        $article->setLikes($);
+        $articleId = $request->query->get('id');
+        $doctrine = $this->getDoctrine();
+        $em = $doctrine->getManager();
+//        $articleRepository = $this->getDoctrine()->getRepository('AppBundle:Article');
+        $query = $em->createQuery(
+            'SELECT a
+        FROM AppBundle:Article a
+        WHERE a.id = :articleId'
+        );
+//        $query->setParameter('like', $username);
+        $article = $query->getArrayResult();
+
+        $em->merge($article);
+        $em->flush();
+        $response = new JsonResponse([
+            'title' => $title,
+            'content' => $content,
+            'author' => $author,
+            'updateDate' => $updateDate,
+        ]);
+        return ($response);
+    }
+
 
 
     /**
